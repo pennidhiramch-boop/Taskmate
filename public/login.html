@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMate | Welcome</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #17172F;
+            --purple: #7770D8;
+            --lavender: #A9A3FF;
+            --peach: #F5BFA8;
+            --muted: #85849A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "DM Sans", sans-serif;
+            background: #F2F1FA;
+            display: grid;
+            place-items: center;
+            padding: 25px;
+            color: var(--navy);
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1120px;
+            min-height: 660px;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr .95fr;
+            box-shadow: 0 25px 80px rgba(36, 32, 83, .12);
+        }
+
+        .welcome-panel {
+            background: var(--navy);
+            color: white;
+            padding: 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 23px;
+            font-weight: 700;
+        }
+
+        .brand-symbol {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: var(--purple);
+            display: grid;
+            place-items: center;
+            font-size: 21px;
+        }
+
+        .brand span {
+            color: var(--lavender);
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+            margin-top: 40px;
+        }
+
+        .welcome-tag {
+            color: #B8B3FF;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+        }
+
+        .welcome-content h1 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(36px, 4vw, 53px);
+            line-height: 1.14;
+            letter-spacing: -2.5px;
+            margin: 22px 0;
+        }
+
+        .welcome-content h1 span {
+            color: var(--lavender);
+        }
+
+        .welcome-content p {
+            color: #B9B8CD;
+            font-size: 14px;
+            line-height: 1.9;
+            max-width: 350px;
+        }
+
+        .artwork {
+            height: 175px;
+            margin: 30px 0;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+
+        .orbit {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 1px solid rgba(190, 183, 255, .35);
+            border-radius: 50%;
+        }
+
+        .orbit.two {
+            width: 190px;
+            height: 190px;
+        }
+
+        .orbit.three {
+            width: 230px;
+            height: 230px;
+            border-style: dashed;
+        }
+
+        .art-center {
+            width: 105px;
+            height: 105px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #A9A3FF, #7066CC);
+            display: grid;
+            place-items: center;
+            font-size: 42px;
+            transform: rotate(-9deg);
+            z-index: 1;
+            box-shadow: 0 15px 45px rgba(119, 112, 216, .3);
+        }
+
+        .art-dot {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            background: var(--peach);
+            border-radius: 50%;
+            top: 15px;
+            right: 20%;
+        }
+
+        .art-star {
+            position: absolute;
+            color: var(--peach);
+            font-size: 27px;
+            left: 18%;
+            bottom: 18px;
+        }
+
+        .welcome-footer {
+            color: #85849E;
+            font-size: 11px;
+            letter-spacing: .4px;
+        }
+
+        .form-panel {
+            padding: 48px 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-top {
+            text-align: right;
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 55px;
+        }
+
+        .form-top a {
+            color: var(--purple);
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .form-heading h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 32px;
+            letter-spacing: -1.3px;
+            margin-bottom: 10px;
+        }
+
+        .form-heading p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .field {
+            margin-bottom: 19px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .field input {
+            width: 100%;
+            height: 49px;
+            border: 1px solid #E5E4EF;
+            border-radius: 10px;
+            padding: 0 15px;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            color: var(--navy);
+            background: #FBFAFE;
+        }
+
+        .field input:focus {
+            border-color: var(--purple);
+            box-shadow: 0 0 0 3px rgba(119, 112, 216, .12);
+            background: white;
+        }
+
+        .password-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .password-row a {
+            font-size: 11px;
+            color: var(--purple);
+            text-decoration: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            height: 51px;
+            border: none;
+            border-radius: 10px;
+            background: var(--purple);
+            color: white;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 13px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #625AC4;
+        }
+
+        .submit-btn:disabled {
+            opacity: .65;
+            cursor: wait;
+        }
+
+        .switch-text {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 24px;
+        }
+
+        .switch-text button {
+            border: none;
+            background: none;
+            color: var(--purple);
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        .form-message {
+            font-size: 12px;
+            line-height: 1.6;
+            margin-top: 14px;
+            min-height: 18px;
+        }
+
+        .form-message.error {
+            color: #DC2626;
+        }
+
+        .form-message.success {
+            color: #059669;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-bottom {
+            text-align: center;
+            margin-top: 35px;
+            color: #AAA9BA;
+            font-size: 10px;
+        }
+
+        @media(max-width:760px) {
+            body {
+                padding: 15px;
+            }
+
+            .page {
+                grid-template-columns: 1fr;
+                max-width: 470px;
+            }
+
+            .welcome-panel {
+                min-height: 320px;
+                padding: 30px;
+            }
+
+            .welcome-content {
+                margin-top: 35px;
+            }
+
+            .welcome-content h1 {
+                font-size: 37px;
+            }
+
+            .artwork {
+                display: none;
+            }
+
+            .welcome-footer {
+                margin-top: 35px;
+            }
+
+            .form-panel {
+                padding: 35px 28px;
+            }
+
+            .form-top {
+                margin-bottom: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <section class="welcome-panel">
+            <div class="brand">
+                <div class="brand-symbol">✳</div>
+                <div>Task<span>Mate.</span></div>
+            </div>
+
+            <div class="welcome-content">
+                <div class="welcome-tag">A BETTER WAY TO STAY ORGANIZED</div>
+
+                <h1>
+                    Your goals.<br>
+                    Your pace.<br>
+                    <span>Your progress.</span>
+                </h1>
+
+                <p>
+                    A little organization goes a long way.
+                    Bring your assignments, daily goals and
+                    study plans together in one space.
+                </p>
+
+                <div class="artwork">
+                    <div class="orbit"></div>
+                    <div class="orbit two"></div>
+                    <div class="orbit three"></div>
+                    <div class="art-center">✦</div>
+                    <div class="art-dot"></div>
+                    <div class="art-star">✧</div>
+                </div>
+            </div>
+
+            <div class="welcome-footer">
+                MADE FOR STUDENTS, BUILT FOR PROGRESS.
+            </div>
+        </section>
+
+        <section class="form-panel">
+            <div class="form-top">
+                <span id="topMessage">New to TaskMate?</span>
+                <a href="#" id="topSwitch">Create account</a>
+            </div>
+
+            <div class="form-heading">
+                <h2 id="formTitle">Welcome back.</h2>
+                <p id="formDescription">
+                    Enter your details to access your workspace.
+                </p>
+            </div>
+
+            <form id="authForm">
+                <div class="field hidden" id="nameField">
+                    <label for="studentName">Student name</label>
+                    <input type="text" id="studentName" placeholder="Enter your full name" autocomplete="name">
+                </div>
+
+                <div class="field">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
+                </div>
+
+                <div class="field">
+                    <div class="password-row">
+                        <label for="password">Password</label>
+                        <a href="#" id="forgotPassword">Forgot password?</a>
+                    </div>
+
+                    <input type="password" id="password" placeholder="Enter your password"
+                        autocomplete="current-password" minlength="8" required>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitButton">
+                    Login to TaskMate →
+                </button>
+
+                <p class="form-message" id="formMessage" role="status"></p>
+            </form>
+
+            <div class="switch-text">
+                <span id="switchLabel">Don't have an account?</span>
+                <button type="button" id="switchButton">Sign up</button>
+            </div>
+
+            <div class="form-bottom">
+                © 2026 TaskMate. Your productivity, your way.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const authForm = document.getElementById("authForm");
+        const nameField = document.getElementById("nameField");
+        const studentName = document.getElementById("studentName");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+
+        const formTitle = document.getElementById("formTitle");
+        const formDescription = document.getElementById("formDescription");
+        const submitButton = document.getElementById("submitButton");
+        const switchButton = document.getElementById("switchButton");
+        const switchLabel = document.getElementById("switchLabel");
+        const topMessage = document.getElementById("topMessage");
+        const topSwitch = document.getElementById("topSwitch");
+        const forgotPassword = document.getElementById("forgotPassword");
+        const formMessage = document.getElementById("formMessage");
+
+        let isSignup = false;
+
+        function showMessage(message, type = "") {
+            formMessage.textContent = message;
+            formMessage.className = "form-message " + type;
+        }
+
+        function changeMode(signup) {
+            isSignup = signup;
+
+            nameField.classList.toggle("hidden", !signup);
+            studentName.required = signup;
+
+            if (signup) {
+                formTitle.textContent = "Create your account.";
+                formDescription.textContent =
+                    "Start organizing your student life with TaskMate.";
+                submitButton.textContent = "Create my account →";
+                switchLabel.textContent = "Already have an account?";
+                switchButton.textContent = "Login";
+                topMessage.textContent = "Already a member?";
+                topSwitch.textContent = "Login";
+                forgotPassword.style.display = "none";
+                password.autocomplete = "new-password";
+            } else {
+                formTitle.textContent = "Welcome back.";
+                formDescription.textContent =
+                    "Enter your details to access your workspace.";
+                submitButton.textContent = "Login to TaskMate →";
+                switchLabel.textContent = "Don't have an account?";
+                switchButton.textContent = "Sign up";
+                topMessage.textContent = "New to TaskMate?";
+                topSwitch.textContent = "Create account";
+                forgotPassword.style.display = "inline";
+                password.autocomplete = "current-password";
+            }
+
+            showMessage("");
+        }
+
+        switchButton.addEventListener("click", () => {
+            changeMode(!isSignup);
+        });
+
+        topSwitch.addEventListener("click", (event) => {
+            event.preventDefault();
+            changeMode(!isSignup);
+        });
+
+        authForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const payload = {
+                email: email.value.trim(),
+                password: password.value
+            };
+
+            let endpoint = "/api/login";
+
+            if (isSignup) {
+                endpoint = "/api/register";
+                payload.name = studentName.value.trim();
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = "Please wait...";
+            showMessage("");
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "same-origin",
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || "Something went wrong.");
+                }
+
+                showMessage("Success! Opening your workspace...", "success");
+                window.location.replace("/dashboard");
+
+            } catch (error) {
+                showMessage(error.message, "error");
+                submitButton.disabled = false;
+                submitButton.textContent = isSignup
+                    ? "Create my account →"
+                    : "Login to TaskMate →";
+            }
+        });
+
+        forgotPassword.addEventListener("click", (event) => {
+            event.preventDefault();
+            showMessage("Password recovery is not available yet.", "error");
+        });
+    </script>
+</body>
+
+</html>

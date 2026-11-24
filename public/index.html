@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMate | Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <a class="brand" href="/dashboard">
+                <span class="brand-mark"><i class="fa-solid fa-check-double"></i></span>
+                <span>Task<span class="brand-accent">Mate.</span></span>
+            </a>
+
+            <div class="workspace-label">WORKSPACE</div>
+
+            <nav class="side-nav">
+                <a href="/dashboard" class="nav-link active">
+                    <i class="fa-solid fa-grid-2"></i>
+                    <span>Overview</span>
+                </a>
+
+                <button class="nav-link" type="button" data-filter="all">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>All tasks</span>
+                </button>
+
+                <button class="nav-link" type="button" data-filter="pending">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Pending</span>
+                    <span class="nav-count" id="pendingNavCount">0</span>
+                </button>
+
+                <button class="nav-link" type="button" data-filter="completed">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Completed</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-profile">
+                    <div class="avatar" id="sidebarAvatar">TM</div>
+                    <div class="profile-copy">
+                        <strong id="sidebarUserName">Student</strong>
+                        <span>Student account</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <span class="eyebrow">YOUR PERSONAL WORKSPACE</span>
+                    <div class="today-date" id="todayDate"></div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="icon-button" id="themeToggle" type="button" aria-label="Switch theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <div class="profile-wrapper">
+                        <button class="top-avatar" id="profileButton" type="button" aria-expanded="false">
+                            TM
+                        </button>
+
+                        <div class="profile-menu" id="profileMenu" hidden>
+                            <div class="menu-profile">
+                                <div class="avatar" id="menuAvatar">TM</div>
+                                <div>
+                                    <strong id="menuUserName">Student</strong>
+                                    <span id="menuUserEmail">student@example.com</span>
+                                </div>
+                            </div>
+
+                            <div class="menu-divider"></div>
+
+                            <button type="button" class="logout-button" id="logoutButton">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="welcome-section">
+                <div>
+                    <span class="eyebrow">LET'S MAKE TODAY COUNT</span>
+                    <h1>Good to see you, <span id="welcomeUserName">Student</span>!</h1>
+                    <p>Keep your priorities clear and make progress one task at a time.</p>
+                </div>
+                <div class="welcome-decoration">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+            </section>
+
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Total tasks</span>
+                        <span class="stat-icon purple"><i class="fa-solid fa-layer-group"></i></span>
+                    </div>
+                    <strong id="totalCount">0</strong>
+                    <small>Tasks in your workspace</small>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Pending</span>
+                        <span class="stat-icon amber"><i class="fa-regular fa-clock"></i></span>
+                    </div>
+                    <strong id="pendingCount">0</strong>
+                    <small>Still waiting for you</small>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Completed</span>
+                        <span class="stat-icon emerald"><i class="fa-solid fa-circle-check"></i></span>
+                    </div>
+                    <strong id="completedCount">0</strong>
+                    <small>Things you've finished</small>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Progress</span>
+                        <span class="stat-icon coral"><i class="fa-solid fa-chart-line"></i></span>
+                    </div>
+                    <strong id="progressCount">0%</strong>
+                    <small>Your completion rate</small>
+                </article>
+            </section>
+
+            <section class="task-section">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">STAY ON TRACK</span>
+                        <h2>Your tasks</h2>
+                        <p id="taskTotalLabel">0 tasks</p>
+                    </div>
+
+                    <div class="filter-group">
+                        <button class="filter-button active" type="button" data-filter="all">All</button>
+                        <button class="filter-button" type="button" data-filter="pending">Pending</button>
+                        <button class="filter-button" type="button" data-filter="completed">Completed</button>
+                    </div>
+                </div>
+
+                <form class="task-form" id="taskForm">
+                    <div class="task-input-wrap">
+                        <i class="fa-solid fa-plus"></i>
+                        <input type="text" id="taskInput" placeholder="What do you need to get done?" maxlength="255"
+                            required>
+                    </div>
+
+                    <input type="date" id="taskDueDate" aria-label="Task due date">
+
+                    <button type="submit" class="add-task-button">
+                        Add task <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="task-list" id="taskList"></div>
+
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <h3>Your workspace is clear!</h3>
+                    <p>Add your first task and start making progress.</p>
+                </div>
+            </section>
+
+            <footer class="dashboard-footer">
+                Made for students, built for progress. <span>TaskMate © 2026</span>
+            </footer>
+        </main>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
