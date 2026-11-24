@@ -43,6 +43,7 @@ https://taskmate-l64em61du-pennidhi.vercel.app/
 ## Database
 TaskMate uses PostgreSQL through Neon to store user accounts, tasks and sessions.
 
+
 ## Architecture
 
 ```mermaid
@@ -55,6 +56,7 @@ flowchart TD
     E --> F
     G[Vercel] --> C
 ```
+
 
 (Add demo video link here)
 
