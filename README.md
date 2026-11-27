@@ -58,7 +58,16 @@ flowchart TD
 ```
 
 
-(Add demo video link here)
+## Demo Videos
+
+### Application Demo
+[Watch TaskMate Application Demo]
+https://drive.google.com/file/d/17Obh7RkaZnNn6T6hb0t_bxzz7LBtLmTG/view?usp=sharing
+
+### PostgreSQL Database Demo
+[Watch PostgreSQL Database Demo]
+https://drive.google.com/file/d/1yfedf-vhs3CYfilP33HDlg72Fm11pBUR/view?usp=sharing
+
 
 ## Author
 Pennidhi
